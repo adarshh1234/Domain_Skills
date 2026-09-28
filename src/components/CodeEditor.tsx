@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Copy, Check, RotateCcw, Code2, Terminal } from 'lucide-react';
+import { Copy, Check, RotateCcw, Terminal } from 'lucide-react';
 
 interface CodeEditorProps {
   code: string;
@@ -30,7 +30,6 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
       const updatedCode = code.substring(0, start) + '  ' + code.substring(end);
       onChange(updatedCode);
 
-      // Restore cursor position
       setTimeout(() => {
         textarea.selectionStart = textarea.selectionEnd = start + 2;
       }, 0);
@@ -53,13 +52,28 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
     <div className="code-editor-container">
       {/* Editor Header Bar */}
       <div className="code-editor-header">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <Terminal size={14} color="#60a5fa" />
-          <span style={{ fontWeight: 600, color: '#e2e8f0', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+          <div
+            style={{
+              width: '22px',
+              height: '22px',
+              borderRadius: '6px',
+              background: 'rgba(59, 130, 246, 0.15)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#60a5fa'
+            }}
+          >
+            <Terminal size={13} strokeWidth={2.4} />
+          </div>
+          <span style={{ fontWeight: 700, color: '#f8fafc', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.06em' }}>
             {language}
           </span>
           <span style={{ color: '#475569' }}>•</span>
-          <span style={{ fontSize: '0.75rem' }}>{lines.length} lines</span>
+          <span style={{ fontSize: '0.725rem', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
+            {lines.length} lines
+          </span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -68,7 +82,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
               type="button"
               onClick={onReset}
               className="btn btn-secondary"
-              style={{ padding: '0.25rem 0.625rem', fontSize: '0.75rem', height: '28px' }}
+              style={{ padding: '0.25rem 0.65rem', fontSize: '0.725rem', height: '28px', borderRadius: '8px' }}
               title="Reset to starter code"
             >
               <RotateCcw size={12} />
@@ -80,11 +94,11 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
             type="button"
             onClick={handleCopy}
             className="btn btn-secondary"
-            style={{ padding: '0.25rem 0.625rem', fontSize: '0.75rem', height: '28px' }}
+            style={{ padding: '0.25rem 0.65rem', fontSize: '0.725rem', height: '28px', borderRadius: '8px' }}
             title="Copy code to clipboard"
           >
-            {copied ? <Check size={12} color="#10b981" /> : <Copy size={12} />}
-            <span>{copied ? 'Copied' : 'Copy'}</span>
+            {copied ? <Check size={12} color="#34d399" strokeWidth={2.5} /> : <Copy size={12} />}
+            <span style={{ color: copied ? '#34d399' : 'inherit' }}>{copied ? 'Copied' : 'Copy'}</span>
           </button>
         </div>
       </div>

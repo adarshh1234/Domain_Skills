@@ -53,37 +53,101 @@ export const Timer: React.FC<TimerProps> = ({ startedAt, duration, onExpire }) =
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '0.75rem',
-        padding: '0.5rem 1rem',
-        background: isCritical ? 'rgba(244, 63, 94, 0.15)' : isLowTime ? 'rgba(245, 158, 11, 0.15)' : 'rgba(17, 24, 39, 0.85)',
-        border: `1px solid ${isCritical ? '#f43f5e' : isLowTime ? '#f59e0b' : '#27354f'}`,
-        borderRadius: '12px',
-        boxShadow: isCritical ? '0 0 16px rgba(244, 63, 94, 0.35)' : '0 2px 8px rgba(0, 0, 0, 0.2)'
+        gap: '0.875rem',
+        padding: '0.55rem 1.15rem',
+        background: isCritical
+          ? 'linear-gradient(135deg, rgba(244, 63, 94, 0.2) 0%, rgba(15, 23, 42, 0.9) 100%)'
+          : isLowTime
+          ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(15, 23, 42, 0.9) 100%)'
+          : 'linear-gradient(135deg, rgba(19, 27, 46, 0.85) 0%, rgba(13, 18, 30, 0.9) 100%)',
+        border: `1px solid ${
+          isCritical ? 'rgba(244, 63, 94, 0.6)' : isLowTime ? 'rgba(245, 158, 11, 0.5)' : 'rgba(255, 255, 255, 0.1)'
+        }`,
+        borderRadius: '14px',
+        boxShadow: isCritical
+          ? '0 0 20px rgba(244, 63, 94, 0.35)'
+          : isLowTime
+          ? '0 0 16px rgba(245, 158, 11, 0.25)'
+          : '0 4px 14px rgba(0, 0, 0, 0.4)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)'
       }}
       className={isCritical ? 'timer-critical' : ''}
     >
-      {isCritical ? (
-        <AlertTriangle size={18} color="#f43f5e" />
-      ) : (
-        <Clock size={18} color={isLowTime ? '#f59e0b' : '#60a5fa'} />
-      )}
+      <div
+        style={{
+          width: '32px',
+          height: '32px',
+          borderRadius: '8px',
+          background: isCritical
+            ? 'rgba(244, 63, 94, 0.2)'
+            : isLowTime
+            ? 'rgba(245, 158, 11, 0.2)'
+            : 'rgba(59, 130, 246, 0.15)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        {isCritical ? (
+          <AlertTriangle size={18} color="#fb7185" strokeWidth={2.4} />
+        ) : (
+          <Clock size={17} color={isLowTime ? '#fbbf24' : '#60a5fa'} strokeWidth={2.2} />
+        )}
+      </div>
 
       <div>
-        <div style={{ fontSize: '0.6875rem', color: isCritical ? '#fb7185' : isLowTime ? '#fcd34d' : '#94a3b8', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+        <div
+          style={{
+            fontSize: '0.675rem',
+            color: isCritical ? '#fda4af' : isLowTime ? '#fcd34d' : '#94a3b8',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.06em'
+          }}
+        >
           {isCritical ? 'Time Expiring' : 'Time Remaining'}
         </div>
-        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.125rem', fontWeight: 700, color: isCritical ? '#f43f5e' : isLowTime ? '#fbbf24' : '#f8fafc', letterSpacing: '0.05em' }}>
+        <div
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '1.18rem',
+            fontWeight: 800,
+            color: isCritical ? '#f43f5e' : isLowTime ? '#fbbf24' : '#f8fafc',
+            letterSpacing: '0.06em',
+            lineHeight: 1.15
+          }}
+        >
           {formattedTime}
         </div>
       </div>
 
       {/* Progress pill */}
-      <div style={{ width: '48px', height: '6px', background: '#1e293b', borderRadius: '9999px', overflow: 'hidden', marginLeft: '0.25rem' }}>
+      <div
+        style={{
+          width: '52px',
+          height: '6px',
+          background: 'rgba(0, 0, 0, 0.45)',
+          border: '1px solid rgba(255, 255, 255, 0.06)',
+          borderRadius: '9999px',
+          overflow: 'hidden',
+          marginLeft: '0.35rem'
+        }}
+      >
         <div
           style={{
             height: '100%',
             width: `${percentRemaining}%`,
-            background: isCritical ? '#f43f5e' : isLowTime ? '#f59e0b' : '#3b82f6',
+            background: isCritical
+              ? 'linear-gradient(90deg, #f43f5e, #fda4af)'
+              : isLowTime
+              ? 'linear-gradient(90deg, #f59e0b, #fcd34d)'
+              : 'linear-gradient(90deg, #3b82f6, #60a5fa)',
+            boxShadow: isCritical
+              ? '0 0 8px #f43f5e'
+              : isLowTime
+              ? '0 0 8px #f59e0b'
+              : '0 0 8px #3b82f6',
             transition: 'width 1s linear'
           }}
         />
