@@ -251,14 +251,30 @@ export const Dashboard: React.FC = () => {
             Run real-time, client-side proctored technical rounds across Algorithms, Distributed System Design, Production Debugging, SQL Modeling, and OWASP Security Audits with persistent timer auto-save.
           </p>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginTop: '1.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.785rem', color: '#cbd5e1' }}>
-              <ShieldCheck size={16} color="#34d399" />
-              <span>Client-Side Sandboxing</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.785rem', color: '#cbd5e1' }}>
-              <Zap size={16} color="#60a5fa" />
-              <span>Deterministic Rubric</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+            <button
+              onClick={() => navigate('/onboarding')}
+              className="btn btn-primary"
+              style={{
+                fontSize: '0.825rem',
+                background: 'linear-gradient(135deg, #7c3aed 0%, #2563eb 100%)',
+                boxShadow: '0 4px 18px rgba(124, 58, 237, 0.45)'
+              }}
+            >
+              <Sparkles size={15} color="#ffffff" />
+              <span>AI Onboarding & Skills Intelligence Suite</span>
+              <ChevronRight size={14} />
+            </button>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.785rem', color: '#cbd5e1' }}>
+                <ShieldCheck size={15} color="#34d399" />
+                <span>Sandboxing</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.785rem', color: '#cbd5e1' }}>
+                <Zap size={15} color="#60a5fa" />
+                <span>Auto-Save</span>
+              </div>
             </div>
           </div>
         </div>
