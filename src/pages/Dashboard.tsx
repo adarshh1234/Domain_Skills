@@ -31,6 +31,7 @@ export const Dashboard: React.FC = () => {
   const [config, setConfig] = useState<AssessmentConfig>({
     domain: 'Frontend Engineering',
     skills: ['React', 'TypeScript'],
+    jobDescription: '',
     difficulty: 'Intermediate',
     time: 30,
     allowCompile: true,

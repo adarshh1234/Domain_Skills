@@ -131,6 +131,59 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({ config, onChange, erro
         )}
       </div>
 
+      {/* SECTION 1.5: JOB DESCRIPTION */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.35rem' }}>
+          <span style={{ fontSize: '0.675rem', fontWeight: 800, color: '#60a5fa', letterSpacing: '0.08em', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>
+            01.5 // JOB DESCRIPTION
+          </span>
+          <span style={{ fontSize: '0.675rem', color: '#64748b' }}>Personalization</span>
+        </div>
+        <p style={{ fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.45rem', lineHeight: '1.4' }}>
+          Paste the job description to personalize the assessment
+        </p>
+        <div style={{ position: 'relative' }}>
+          <textarea
+            id="job-description-textarea"
+            className="form-textarea"
+            value={config.jobDescription ?? ''}
+            onChange={(e) => onChange({ jobDescription: e.target.value })}
+            placeholder="Paste the complete job description here..."
+            style={{
+              width: '100%',
+              minHeight: '130px',
+              height: '130px',
+              padding: '0.75rem 0.9rem 1.85rem 0.9rem',
+              fontSize: '0.8125rem',
+              lineHeight: '1.5',
+              background: 'rgba(7, 11, 20, 0.85)',
+              borderColor: 'rgba(255, 255, 255, 0.1)',
+              borderRadius: 'var(--radius-sm)',
+              color: 'var(--text-primary)',
+              resize: 'vertical',
+              fontFamily: 'inherit'
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '0.55rem',
+              right: '0.75rem',
+              fontSize: '0.675rem',
+              color: '#64748b',
+              fontFamily: 'var(--font-mono)',
+              pointerEvents: 'none',
+              background: 'rgba(7, 11, 20, 0.85)',
+              padding: '0.1rem 0.4rem',
+              borderRadius: '4px',
+              border: '1px solid rgba(255, 255, 255, 0.05)'
+            }}
+          >
+            {config.jobDescription ? config.jobDescription.length : 0} characters
+          </div>
+        </div>
+      </div>
+
       {/* SECTION 2: CAPABILITIES / SKILLS */}
       <div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>

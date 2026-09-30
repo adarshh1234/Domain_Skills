@@ -9,6 +9,7 @@ export type AssessmentMode =
 export interface AssessmentConfig {
   domain: string;
   skills: string[];
+  jobDescription?: string;
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   time: number; // in minutes
   allowCompile: boolean;
